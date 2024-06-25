@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus-cluster-role-binding
+  namespace: dev  # Specify the namespace where resources reside
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: monitoring  # Specify the namespace where Prometheus is located
+roleRef:
+  kind: ClusterRole
+  name: prometheus-cluster-role
+  apiGroup: rbac.authorization.k8s.io
